@@ -1,3 +1,6 @@
+import random
+
+
 class Lab03:
     def __init__(self, initial_count):
         self.count = initial_count
@@ -14,8 +17,21 @@ class Lab03:
         self.students.extend(students)
         self.add(len(students))
 
+    def get_random_groups(self, number_of_students):
+        groups = []
+        number_of_groups = self.count // number_of_students
+        for _ in range(number_of_groups):
+            group = []
+            while len(group) < number_of_students:
+                group.append(random.choice(self.students))
+            groups.append(group)
+        return groups
+
 
 def main():
-    l = Lab03(5)
-    l.add(5)
-    print(l.get_current_count())
+    l = Lab03(0)
+    l.read_student_list()
+    print(l.get_random_groups(2))
+
+
+main()
