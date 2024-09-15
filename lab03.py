@@ -23,7 +23,8 @@ class Lab03:
         for _ in range(number_of_groups):
             group = []
             while len(group) < number_of_students:
-                group.append(random.choice(self.students))
+                if random.choice(self.students) not in group:
+                    group.append(random.choice(self.students))
             groups.append(group)
         return groups
 
